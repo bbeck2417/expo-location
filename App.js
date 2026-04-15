@@ -69,6 +69,24 @@ export default function WhereAmI() {
       watcher?.remove();
     };
   }, []);
+  if (Platform.OS === "web") {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.label}>
+          Maps are not supported in the Web preview.
+        </Text>
+        <Text style={styles.label}>
+          Please use the Android or iOS tab to view the map.
+        </Text>
+        <View style={localStyles.overlay}>
+          <Text style={styles.label}>Address: {address}</Text>
+          <Text style={styles.label}>
+            Lat: {latitude} | Long: {longitude}
+          </Text>
+        </View>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
